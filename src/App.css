@@ -1,7 +1,9 @@
 .App {
   max-width: 860px;
   margin: 40px auto;
+  text-align: center;
 }
+
 button {
   background: none;
   border: 2px solid #fff;
@@ -11,42 +13,68 @@ button {
   font-weight: bold;
   cursor: pointer;
   font-size: 1em;
+  transition: background-color 0.3s ease;
 }
+
 button:hover {
   background: #c23866;
   color: #fff;
+}
+
+.cards-container {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-gap: 20px;
 }
 
 .card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ffffff;
-  padding: 10px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
   border-radius: 8px;
 }
 
 .card-info {
+  margin-top: 10px;
   text-align: center;
   color: #1b1523;
+}
+
+.card-info .language-name {
+  font-size:0.95em;
   font-weight: bold;
+  margin: 10px 0;
 }
 
-.card-info p {
-  margin: 5px 0;
-}
-
-.card-grid {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 20px;
+.card-info .percentage {
+  font-size: 0.75em;
+  font-style: italic;
+  font-weight: bold;
+  color: #777;
 }
 
 .new-game {
-  position: absolute;
-  top: 22%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
+  margin-top: 30px;
+  font-size: 1.2em;
+}
+
+.front, .back {
+  border-radius: 8px;
 }
