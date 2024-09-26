@@ -1,3 +1,5 @@
+import './Card.css';
+
 const Card = ({ frontImage, backImage, label, percentage }) => {
     return (
       <div className="card">

@@ -1,4 +1,5 @@
 import Card from './Card';
+import './CardContainer.css';
 
 const CardContainer = ({ cards }) => {
   return (

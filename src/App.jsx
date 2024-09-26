@@ -1,4 +1,3 @@
-// src/App.jsx
 import { useState } from 'react';
 import './App.css';
 import cardData from './cards.json'; // Import JSON data

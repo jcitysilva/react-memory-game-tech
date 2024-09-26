@@ -1,8 +1,10 @@
+import './Header.css';
+
 const Header = ({ shuffleCards }) => {
     return (
       <div className="header">
         <h1>2024 Most Popular</h1>
-        <button onClick={shuffleCards}>New Game</button>
+        <button className='new-game' onClick={shuffleCards}>New Game</button>
       </div>
     );
   };
