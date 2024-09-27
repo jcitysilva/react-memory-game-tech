@@ -1,5 +1,6 @@
 p {
-  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  font-size: 1.5rem;
+  max-width: 100%;
   text-align: center;
 }
 
@@ -15,11 +16,11 @@ p {
   }
 }
 
-.card-container {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  grid-gap: 20px;
-  padding: 0 10px;
-}
+.cards-container {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-gap: 20px;
+    padding: 0 10px;
+  }
   
