@@ -1,49 +1,61 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
-
-const cardImages = [
-  { src: "/img/bash.png" },
-  { src: "/img/cover.png" },
-  { src: "/img/htmlcss.png" },
-  { src: "/img/javascript.png" },
-  { src: "/img/python.png" },
-  { src: "/img/sql.png" },
-  { src: "/img/ts.png" }
-];
+import cardData from './cards.json';
+import Header from './components/Header';
+import CardContainer from './components/CardContainer';
 
 function App() {
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
+  const [choiceOne, setChoiceOne] = useState(null);
+  const [choiceTwo, setChoiceTwo] = useState(null);
+  const [disabled, setDisabled] = useState(false);
 
-  // shuffle cards
   const shuffleCards = () => {
-    const shuffledCards = [...cardImages, ...cardImages]
+    const shuffledCards = [...cardData, ...cardData]
       .sort(() => Math.random() - 0.5)
-      .map((card) => ({ ...card, id: Math.random() }));
-
+      .map((card) => ({ ...card, id: Math.random(), matched: false }));
+    
     setCards(shuffledCards);
     setTurns(0);
+    setChoiceOne(null);
+    setChoiceTwo(null);
   };
 
-  console.log(cards, turns);
+  const handleChoice = (card) => {
+    choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+  };
+
+  useEffect(() => {
+    if (choiceOne && choiceTwo) {
+      setDisabled(true);
+      if (choiceOne.label === choiceTwo.label) {
+        setCards(prevCards => {
+          return prevCards.map(card => {
+            if (card.label === choiceOne.label) {
+              return { ...card, matched: true };
+            }
+            return card;
+          });
+        });
+        resetTurn();
+      } else {
+        setTimeout(() => resetTurn(), 1000);
+      }
+    }
+  }, [choiceOne, choiceTwo]);
+
+  const resetTurn = () => {
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setTurns(prevTurns => prevTurns + 1);
+    setDisabled(false);
+  };
 
   return (
     <div className="App">
-      <h1>2024 Most Popular</h1>
-      <button onClick={shuffleCards}>New Game</button>
-
-      {/* Conditionally render cards if the array is not empty */}
-      <div className="cards-container">
-        {cards.length === 0 ? (
-          <p>Click "New Game" to start!</p>
-        ) : (
-          cards.map((card) => (
-            <div className="card" key={card.id}>
-              <img src={card.src} alt="card" />
-            </div>
-          ))
-        )}
-      </div>
+      <Header shuffleCards={shuffleCards} turns={turns} />
+      <CardContainer cards={cards} handleChoice={handleChoice} choiceOne={choiceOne} choiceTwo={choiceTwo} disabled={disabled} />
     </div>
   );
 }

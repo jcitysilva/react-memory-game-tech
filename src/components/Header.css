@@ -1,0 +1,162 @@
+a {
+  color: #fff;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:hover {
+  font-size: 105%;
+  text-decoration: underline;
+  -webkit-transition-delay: 25ms;
+  -moz-transition-delay: 25ms;
+  -ms-transition-delay: 25ms;
+  -o-transition-delay: 25ms;
+  transition-delay: 25ms;
+}
+
+h1 {
+  width: auto;
+  height: auto;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 2rem; /* Base font size (16px on smaller screens) */
+  max-width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem; /* Larger font size for medium devices */
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 3rem; /* Larger font size for desktops */
+  }
+}
+
+h1:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+h1:after {
+  background: transparent;
+}
+
+h1:before {
+  opacity: 1;
+}
+
+h1:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #1b1523;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+button {
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1em;
+  position: relative;
+  display: inline-block;
+  margin: 15px;
+}
+
+.new-game {
+  color: white;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem; /* Base font size for mobile */
+  text-align: center;
+  text-decoration: none;
+  background-color: #ffa12b;
+  display: block;
+  position: relative;
+  padding: 10px 20px;
+  max-width: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-shadow: 0px 1px 0px #000;
+  filter: dropshadow(color=#000, offx=0px, offy=1px);
+  -webkit-box-shadow: inset 0 1px 0 #ffe5c4, 0 10px 0 #915100;
+  -moz-box-shadow: inset 0 1px 0 #ffe5c4, 0 10px 0 #915100;
+  box-shadow: inset 0 1px 0 #ffe5c4, 0 10px 0 #915100;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+  .new-game {
+    font-size: 2rem; /* Larger font size for tablets */
+  }
+}
+
+@media (min-width: 1024px) {
+  .new-game {
+    font-size: 2.5rem; /* Larger font size for desktops */
+  }
+}
+
+.new-game:active {
+  top: 10px;
+  background-color: #f78900;
+  -webkit-box-shadow: inset 0 1px 0 #ffe5c4, inset 0 -3px 0 #915100;
+  -moz-box-shadow: inset 0 1px 0 #ffe5c4, inset 0 -3px 0 #915100;
+  box-shadow: inset 0 1px 0 #ffe5c4, inset 0 -3px 0 #915100;
+}
+
+.new-game:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  padding: 4px;
+  position: absolute;
+  bottom: -15px;
+  left: -4px;
+  z-index: -1;
+  background-color: #2b1800;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
